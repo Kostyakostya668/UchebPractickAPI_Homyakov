@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using UchebPractickAPI_Homyakov.Data;
+using UchebPractickAPI_Homyakov.Middlewares;
 using UchebPractickAPI_Homyakov.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -23,6 +24,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+app.UseMiddleware<ExceptionMiddleware>();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
